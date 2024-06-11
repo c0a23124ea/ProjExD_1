@@ -20,7 +20,6 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-
         x = tmr%3200
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_img2,[-x+1600,0])
@@ -35,6 +34,9 @@ def main():
             kk_rct.move_ip((1,0))
         elif key_lst[pg.K_LEFT]:
             kk_rct.move_ip((-1,0))
+        
+        if not any(key_lst):
+            kk_rct.move_ip((-1, 0))
         screen.blit(kk_img, kk_rct)
         pg.display.update()
         tmr += 1        
